@@ -7,7 +7,7 @@ const characters = [
         stats: { health: 85, money: 35, credit: 50, intelligence: 45, social: 45 },
         color: "#FF9800",
         icon: "fas fa-lightbulb",
-        avatar: "images/player/shuaizha.png"
+        avatar: "./images/player/shuaizha.jpg"
     },
     {
         id: "changbozi",
@@ -16,7 +16,7 @@ const characters = [
         stats: { health: 80, money: 55, credit: 45, intelligence: 50, social: 55 },
         color: "#9C27B0",
         icon: "fas fa-music",
-        avatar: "images/player/changbozi.png"
+        avatar: "./images/player/changbozi.jpg"
     },
     {
         id: "wangyue",
@@ -25,7 +25,7 @@ const characters = [
         stats: { health: 85, money: 65, credit: 50, intelligence: 45, social: 50 },
         color: "#E91E63",
         icon: "fas fa-heart",
-        avatar: "images/player/wangyue.png"
+        avatar: "./images/player/wangyue.jpg"
     },
     {
         id: "chengzi",
@@ -34,7 +34,7 @@ const characters = [
         stats: { health: 90, money: 60, credit: 45, intelligence: 45, social: 60 },
         color: "#FF5722",
         icon: "fas fa-camera",
-        avatar: "images/player/chengzi.png"
+        avatar: "./images/player/chengzi.jpg"
     },
     {
         id: "daoyan",
@@ -43,7 +43,7 @@ const characters = [
         stats: { health: 80, money: 35, credit: 55, intelligence: 65, social: 45 },
         color: "#2196F3",
         icon: "fas fa-video",
-        avatar: "images/player/daoyan.png"
+        avatar: "./images/player/daoyan.jpg"
     },
     {
         id: "datou",
@@ -52,7 +52,7 @@ const characters = [
         stats: { health: 75, money: 25, credit: 60, intelligence: 75, social: 35 },
         color: "#4CAF50",
         icon: "fas fa-gamepad",
-        avatar: "images/player/datou.png"
+        avatar: "./images/player/datou.jpg"
     }
 ];
 
