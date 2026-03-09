@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福建大学大学生存挑战</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 标题区域 -->
+        <div class="header">
+            <h1>福建大学大学生存挑战</h1>
+            <div class="subtitle">从入学到毕业的4年生存挑战</div>
+        </div>
+        
+        <!-- 主游戏区域 -->
+        <div class="main-game-area">
+            <!-- 左侧游戏内容 -->
+            <div class="game-content">
+                <!-- 场景显示区域 -->
+                <div class="scene-area">
+                    <h2 class="scene-title" id="current-scene">福建大学 - 校园广场</h2>
+                    <div class="scene-image" id="scene-image"></div>
+                    <h3 style="color: #0d47a1; margin-top: 15px;" id="current-scene-name">校园广场</h3>
+                    <div class="scene-dialogue" id="scene-dialogue">
+                        <div class="speaker"><i class="fas fa-user"></i> 系统</div>
+                        <div class="dialogue-content">欢迎来到福建大学，这里是校园广场，是学生们聚集的地方。请选择你的角色开始游戏！</div>
+                    </div>
+                </div>
+                
+                <!-- 场景标签区域 -->
+                <div class="scene-tabs" id="scene-tabs">
+                    <!-- 场景标签将通过JavaScript动态生成 -->
+                </div>
+                
+                <!-- 行动选择区域 -->
+                <div class="action-area">
+                    <h3 class="section-title"><i class="fas fa-tasks"></i> 行动选择</h3>
+                    <div class="action-buttons" id="action-buttons">
+                        <!-- 行动按钮将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <!-- NPC互动区域 -->
+                <div class="npc-interaction-area" id="npc-interaction-area">
+                    <h3 class="section-title"><i class="fas fa-users"></i> NPC互动</h3>
+                    <div id="npc-interactions">
+                        <!-- NPC互动按钮将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧信息面板 -->
+            <div class="info-panel">
+                <!-- 顶部信息栏 -->
+                <div class="top-info-bar">
+                    <div class="player-info">
+                        <div class="player-avatar" id="player-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="player-name" id="player-name">未选择角色</div>
+                    </div>
+                    
+                    <div class="time-info" id="time-info">
+                        第1年 - 第1学期 - 第1周
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-labels">
+                            <span>生命值</span>
+                            <span>资金</span>
+                            <span>学分</span>
+                            <span>智力</span>
+                            <span>社交</span>
+                            <span>探索</span>
+                        </div>
+                        <div class="stat-values">
+                            <span id="health-value">100</span>
+                            <span id="money-value">50</span>
+                            <span id="credit-value">45</span>
+                            <span id="intelligence-value">50</span>
+                            <span id="social-value">50</span>
+                            <span id="exploration-value">0</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 周进度 -->
+                    <div class="week-progress">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>本周行动: <span id="actions-taken">0</span>/10</span>
+                            <span>NPC互动: <span id="npc-actions-taken">0</span>/3</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="week-progress-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-bar" style="margin-top: 10px;">
+                            <div class="progress-fill" id="npc-progress-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 背包区域 -->
+                <div class="inventory-area">
+                    <div class="inventory-header">
+                        <h3 class="section-title"><i class="fas fa-backpack"></i> 背包</h3>
+                    </div>
+                    <div class="inventory-items" id="inventory-items">
+                        <!-- 背包物品将通过JavaScript动态生成 -->
+                    </div>
+                    
+                    <!-- 本周已执行行动 -->
+                    <div class="weekly-actions-list" style="margin-top: 20px;">
+                        <h4><i class="fas fa-list"></i> 本周行动记录</h4>
+                        <div id="weekly-actions-container">
+                            <!-- 本周行动将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 事件通知 -->
+    <div class="event-notification" id="event-notification">
+        <!-- 通知内容将通过JavaScript动态生成 -->
+    </div>
+    
+    <!-- 角色选择模态框 -->
+    <div class="modal" id="character-select-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-character-modal">&times;</button>
+            <h2 style="text-align: center; color: #0d47a1; margin-bottom: 20px;">选择角色</h2>
+            <div id="character-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                <!-- 角色列表将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 事件结果模态框 -->
+    <div class="modal" id="event-result-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-event-modal">&times;</button>
+            <h2 style="text-align: center; color: #0d47a1; margin-bottom: 20px;" id="event-result-title">事件结果</h2>
+            <div id="event-result-content" style="line-height: 1.6;">
+                <!-- 事件结果将通过JavaScript动态生成 -->
+            </div>
+            <button id="event-result-ok" style="display: block; margin: 20px auto; padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 5px; cursor: pointer;">确定</button>
+        </div>
+    </div>
+    
+    <!-- 道具详情模态框 -->
+    <div class="modal" id="item-detail-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-item-modal">&times;</button>
+            <h2 style="text-align: center; color: #0d47a1; margin-bottom: 20px;" id="item-name">道具名称</h2>
+            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                <div id="item-icon" style="text-align: center;"></div>
+                <div>
+                    <p><strong>描述:</strong> <span id="item-description">道具描述</span></p>
+                    <p><strong>效果:</strong> <span id="item-effect">道具效果</span></p>
+                </div>
+            </div>
+            <div class="item-modal-buttons">
+                <button class="item-modal-btn item-use-btn" id="use-item-btn">使用</button>
+                <button class="item-modal-btn item-discard-btn" id="discard-item-btn">丢弃</button>
+                <button class="item-modal-btn item-close-btn" id="close-item-detail">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 学期总结模态框 -->
+    <div class="modal" id="semester-summary-modal">
+        <div class="semester-summary">
+            <h2 class="summary-title">学期总结</h2>
+            <div class="summary-info">
+                <div class="summary-info-item">
+                    <div class="summary-info-label">学年</div>
+                    <div class="summary-info-value" id="semester-info-year">1</div>
+                </div>
+                <div class="summary-info-item">
+                    <div class="summary-info-label">学期</div>
+                    <div class="summary-info-value" id="semester-info-semester">1</div>
+                </div>
+                <div class="summary-info-item">
+                    <div class="summary-info-label">行动次数</div>
+                    <div class="summary-info-value" id="semester-info-actions">0</div>
+                </div>
+                <div class="summary-info-item">
+                    <div class="summary-info-label">NPC互动</div>
+                    <div class="summary-info-value" id="semester-info-npc">0</div>
+                </div>
+            </div>
+            <div class="summary-section">
+                <h3 class="summary-section-title"><i class="fas fa-chart-line"></i> 数值变化</h3>
+                <table class="stats-change-table" id="stats-change-table">
+                    <!-- 数值变化表格将通过JavaScript动态生成 -->
+                </table>
+            </div>
+            <div class="summary-section">
+                <h3 class="summary-section-title"><i class="fas fa-gift"></i> 获得道具</h3>
+                <div id="items-acquired-container" class="items-acquired-list">
+                    <!-- 获得道具列表将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="summary-section">
+                <h3 class="summary-section-title"><i class="fas fa-comment-dots"></i> 学期评价</h3>
+                <div id="semester-evaluation" style="background: #f5f9ff; padding: 15px; border-radius: 10px; border-left: 5px solid #1e88e5;">
+                    <!-- 学期评价将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="summary-buttons">
+                <button class="summary-button summary-continue-btn" id="continue-semester-btn">继续</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript文件 -->
+    <script src="js/player.js"></script>
+    <script src="js/npc.js"></script>
+    <script src="js/item.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
