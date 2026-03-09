@@ -80,9 +80,6 @@ function initGame() {
     updateUI();
     
     // 设置事件监听器
-    document.getElementById('close-character-modal').addEventListener('click', function() {
-        document.getElementById('character-select-modal').style.display = 'none';
-    });
     
     document.getElementById('close-event-modal').addEventListener('click', function() {
         document.getElementById('event-result-modal').style.display = 'none';
@@ -128,9 +125,9 @@ function updateUI() {
     document.getElementById('time-info').textContent = `第${gameState.year}年 - 第${gameState.semester}学期 - 第${gameState.week}周`;
     
     // 更新场景显示
-    document.getElementById('current-scene').textContent = `福建大学 - ${gameState.currentScene}`;
+    document.getElementById('current-scene').textContent = `福建吃饭大学 - ${gameState.currentScene}`;
     document.getElementById('current-scene-name').textContent = gameState.currentScene;
-    document.getElementById('scene-image').innerHTML = `<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; color: #0d47a1; font-weight: bold;">${scenes[gameState.currentScene]?.imageText || gameState.currentScene}</div>`;
+    document.getElementById('scene-image').innerHTML = `<img src="./images/scene-horizontal/${gameState.currentScene}.jpg" alt="${gameState.currentScene}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">`;
     
     // 更新场景标签
     updateSceneTabs();
